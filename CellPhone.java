@@ -8,6 +8,7 @@ public class CellPhone{
 
     public CellPhone()
     {
+
         serialNum = SNCtr;
         SNCtr++;
     }
@@ -53,7 +54,16 @@ public class CellPhone{
     {
         this.price = price;
     }
-    
+
+    public String toString()
+    {
+        return "Serial Number: " + this.serialNum + "\nBrand: " + this.brand + "\nYear: " + this.year + "\nPrice: " + this.price;
+    }
+
+    public boolean equals(CellPhone x)
+    {
+        return(this.brand.equals(x.brand) && this.price == x.price && this.year == x.year);
+    }
     //that's a copy
     CellPhone(CellPhone c, long serialNum)
     {
