@@ -73,7 +73,7 @@ public class CellPhone{
         this.price = c.price;
     }
 
-    public Object clone(Scanner sc)
+    public CellPhone clone(Scanner sc)
     {
         System.out.println("Please enter a new serial number: ");
         long enteredSN = sc.nextLong();
