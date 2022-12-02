@@ -1,3 +1,4 @@
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CellList implements Cloneable{
@@ -7,20 +8,23 @@ public class CellList implements Cloneable{
         Scanner sc = new Scanner(System.in);
         private CellPhone c;
         private CellNode next;
-
+        
         public CellNode()
         {
             c = null;
             next = null;
+            size++;
         }
         public CellNode(CellPhone cr, CellNode xt)
         {
             c = cr;
             next = xt;
+            size++;
         }
         
         public CellNode clone()
         {
+            size++;
             return new CellNode(this);
         }
         
@@ -28,6 +32,7 @@ public class CellList implements Cloneable{
         {
             c = cn.c.clone(sc);
             next = cn.next;
+            size++;
         }
 
         public void setCellPhone(CellPhone cr)
@@ -77,12 +82,82 @@ public class CellList implements Cloneable{
             t2 = t3 = null;
         }
     }
+    
     public void addToStart(CellPhone c)
     {
         head = new CellNode(c,head);
     }
+    //the exception is for invalid integer, check if it works later
     public void insertAtIndex(CellPhone c, int i) //throws NoSuchElementException
     {
+        CellNode node = new CellNode();
+        node.c = c;
+        node.next = null;
+        if(i < 0 || i > CellList.size - 1)
+        {
+            throw new NoSuchElementException();
+        }
+        if (head == null)
+        {
+            if(i != 0)
+            {
+                return;
+            }
+            else
+            {
+                head = node;
+            }
+        }
+        if(head != null && i == 0)
+        {
+            node.next = head;
+            head = node;
+            return;
+        }
+
+        CellNode current = head;
+        CellNode prev = null;
+
+        int j = 0;
+
+        while(j < i)
+        {
+            prev = current;
+            current = current.next;
+
+            if(current == null)
+            {
+                break;
+            }
+            j++;
+        }
+
+        node.next = current;
+        prev.next = node;
+    }
+    //i think this works? it should unlink the node from the list so it'll be deleted
+    public void deleteFromIndex(int i) //throws NoSuchElementException
+    {
+        CellNode temp = head;
+        if(i < 0 || i > CellList.size)
+        {
+            throw new NoSuchElementException();
+        }
+        else if(head == null)
+        {
+            System.out.println("nothin to delete");
+            return;
+        }
+        else if(i == 0)
+        {
+            head = temp.next;
+        }
+        for(int j = 0; temp != null && j < i - 1; j++)
+        {
+            temp = temp.next;
+        }
+        CellNode next = temp.next.next;
+        temp.next = next;
 
     }
 }
