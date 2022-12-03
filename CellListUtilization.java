@@ -11,5 +11,6 @@ public class CellListUtilization {
         Cell1.addToStart(c2);
         Cell1.addToStart(c1);
         Cell1.showContents();
+        System.out.println(Cell1.find(21891289));
     }
 }

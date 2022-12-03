@@ -1,7 +1,7 @@
-import java.time.chrono.ThaiBuddhistChronology;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+//this is my magnum opus and i will take no complaints. im probably out this bitch after the semester is over so this is my last code for a failed degree :D
 public class CellList implements Cloneable{
     
     public class CellNode 
@@ -35,7 +35,6 @@ public class CellList implements Cloneable{
             next = cn.next;
             size++;
         }
-
         public void setCellPhone(CellPhone cr)
         {
             c = cr;
@@ -45,13 +44,20 @@ public class CellList implements Cloneable{
             next = xt;
         }
         
-    }
+    } //end of CellNode
+
     private CellNode head;
-    private static int size = 0;
+    int size;
 
     public CellList()
     {
         head = null;
+        size = 0;
+    }
+
+    public int getSize()
+    {
+        return size;
     }
     //copy constructor
     public CellList(CellList lt)
@@ -94,7 +100,7 @@ public class CellList implements Cloneable{
         CellNode node = new CellNode();
         node.c = c;
         node.next = null;
-        if(i < 0 || i > CellList.size - 1)
+        if(i < 0 || i > size - 1)
         {
             throw new NoSuchElementException();
         }
@@ -139,7 +145,7 @@ public class CellList implements Cloneable{
     public void deleteFromIndex(int i) //throws NoSuchElementException
     {
         CellNode temp = head;
-        if(i < 0 || i > CellList.size)
+        if(i < 0 || i > size)
         {
             throw new NoSuchElementException("That index does not exist");
         }
@@ -161,23 +167,57 @@ public class CellList implements Cloneable{
         size--;
 
     }
-    public void deleteFromStart()
+    public boolean deleteFromStart()
     {
-        size--;
+        if(head != null)
+        {
+            head = head.next;
+            size--;
+            return true;
+        }
+        else
+            return false;  
     }
-    public void replaceAtIndex(CellPhone c, int i)
+    public void replaceAtIndex(CellPhone x, int i)
     {
+        if(i > size -1)
+        {
+            System.out.println("ERROR: Given index is out of range! Program will terminate. \n");
+            throw new NoSuchElementException();
+        }
+        int j = 0;
+		CellNode temp = head;
+		while(j != i)
+		{
+			temp = temp.next;
+			j++;
+		}
+		System.out.println("Replacing value at index # " + i + " from " + temp.c + " to " + x + ". \n");
+		temp.c = x;
 
     }
-    public void find(long SN)
+    public CellNode find(long SN)
     {
-
+        CellNode temp = head;
+        while(temp != null)
+        {
+            if(temp.c.getSerialNum() == SN)
+            {
+                return temp;
+            }
+            temp = temp.next;
+        }
+        return null;
     }
     public boolean contains(long SN)
     {
-        return false;
+        if(find(SN) != null)
+            return true;
+        else
+            return false;
     }
-    public void showContents()
+
+    public void showContents() //honestly i kind of slayed this(I "borrowed" it from Aiman)
     {
         
         CellNode temp = head;
@@ -188,7 +228,7 @@ public class CellList implements Cloneable{
         else
         {
             System.out.println("The current size of the list is " + size + ". Here are the contents of the list");
-            System.out.println("====================================================================================");
+            System.out.println("===========================================================================");
         }
         while(temp != null)
         {
@@ -197,8 +237,19 @@ public class CellList implements Cloneable{
         }
         System.out.println(" X");
     }
-    public boolean equals(CellList c)
+
+    public boolean equals(CellList cell)
     {
+        CellNode temp = head;
+        CellNode temp1 = cell.head;
+
+        for(int j = 0; j < size; j++)
+        {
+            for(int k = 0; k < cell.size; k++)
+            {
+                
+            }
+        }
         return true;
     }
 }
