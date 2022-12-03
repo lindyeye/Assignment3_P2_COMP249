@@ -57,7 +57,8 @@ public class CellPhone{
 
     public String toString()
     {
-        return "Serial Number: " + this.serialNum + "\nBrand: " + this.brand + "\nYear: " + this.year + "\nPrice: " + this.price;
+        return serialNum + ": " + brand +" " + price +" " + year;
+        //return "Serial Number: " + this.serialNum + "\nBrand: " + this.brand + "\nYear: " + this.year + "\nPrice: " + this.price;
     }
 
     public boolean equals(CellPhone x)

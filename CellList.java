@@ -1,3 +1,4 @@
+import java.time.chrono.ThaiBuddhistChronology;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -114,7 +115,6 @@ public class CellList implements Cloneable{
             head = node;
             return;
         }
-
         CellNode current = head;
         CellNode prev = null;
 
@@ -131,9 +131,9 @@ public class CellList implements Cloneable{
             }
             j++;
         }
-
         node.next = current;
         prev.next = node;
+        size++;
     }
     //i think this works? it should unlink the node from the list so it'll be deleted
     public void deleteFromIndex(int i) //throws NoSuchElementException
@@ -141,11 +141,11 @@ public class CellList implements Cloneable{
         CellNode temp = head;
         if(i < 0 || i > CellList.size)
         {
-            throw new NoSuchElementException();
+            throw new NoSuchElementException("That index does not exist");
         }
         else if(head == null)
         {
-            System.out.println("nothin to delete");
+            System.out.println("Nothing to delete");
             return;
         }
         else if(i == 0)
@@ -156,8 +156,49 @@ public class CellList implements Cloneable{
         {
             temp = temp.next;
         }
-        CellNode next = temp.next.next;
+        CellNode next = temp.next;
         temp.next = next;
+        size--;
 
+    }
+    public void deleteFromStart()
+    {
+        size--;
+    }
+    public void replaceAtIndex(CellPhone c, int i)
+    {
+
+    }
+    public void find(long SN)
+    {
+
+    }
+    public boolean contains(long SN)
+    {
+        return false;
+    }
+    public void showContents()
+    {
+        
+        CellNode temp = head;
+        if(temp == null)
+        {
+            System.out.println("The list is empty, there is nothing to print.");
+        }
+        else
+        {
+            System.out.println("The current size of the list is " + size + ". Here are the contents of the list");
+            System.out.println("====================================================================================");
+        }
+        while(temp != null)
+        {
+            System.out.print(" [" + temp.c + "] --->");
+            temp = temp.next;
+        }
+        System.out.println(" X");
+    }
+    public boolean equals(CellList c)
+    {
+        return true;
     }
 }
