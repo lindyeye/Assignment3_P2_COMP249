@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 //this is my magnum opus and i will take no complaints. im probably out this bitch after the semester is over so this is my last code for a failed degree :D
-public class CellList implements Cloneable{
+public class CellList{
     
     public class CellNode 
     {
@@ -87,7 +87,7 @@ public class CellList implements Cloneable{
      * copy constructor
      * @param lt CellList that is reference for the copy
      */
-    public CellList(CellList lt) //tested it works
+    public CellList(CellList lt) //tested it works check deep copy
     {
         if(lt.head == null)
             head = null;
@@ -160,9 +160,7 @@ public class CellList implements Cloneable{
         }
         CellNode current = head;
         CellNode prev = null;
-
         int j = 0;
-
         while(j < i)
         {
             prev = current;
@@ -226,6 +224,7 @@ public class CellList implements Cloneable{
     }
     
     /** 
+     * 
      * @param x
      * @param i
      */
@@ -252,7 +251,7 @@ public class CellList implements Cloneable{
      * @param SN
      * @return CellNode
      */
-    public CellNode find(long SN)
+    public CellNode find(long SN) //mem leak <3
     {
         CellNode temp = head;
         while(temp != null)
