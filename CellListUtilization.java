@@ -43,9 +43,13 @@ public class CellListUtilization {
             CellPhone c1 = new CellPhone(s,x,y,p);
             cl1.addToStart(c1);
         }
-        
+        CellPhone c5 = new CellPhone();
         cl1.showContents();
-        
+        cl1.replaceAtIndex(c5, -2);
+        // cl1.deleteFromStart();
+        cl1.showContents();
+        // CellList cl3 = new CellList(cl1);
+        // cl3.showContents();
         
         
     }

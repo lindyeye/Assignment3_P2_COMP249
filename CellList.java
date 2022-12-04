@@ -14,36 +14,57 @@ public class CellList implements Cloneable{
         Scanner sc = new Scanner(System.in);
         private CellPhone c;
         private CellNode next;
-        
+        /**
+         * Default constructor.
+        */
         public CellNode()
         {
             c = null;
             next = null;
             size++;
         }
+        /**
+         * Constructor that takes parameters.
+         * @param cr cellphone to store in the node
+         * @param xt new CellNode
+         */
         public CellNode(CellPhone cr, CellNode xt)
         {
             c = cr;
             next = xt;
             size++;
         }
-        
+        /** 
+         * clone method. calls the copy constructor to create a new node with a duplicate cellphone
+         * @return CellNode new CellNode that is created
+         */
         public CellNode clone()
         {
             size++;
             return new CellNode(this);
         }
-        
+        /** 
+         * copy constructor
+         * @param cn cellNode that is the copy reference
+         */
         public CellNode(CellNode cn)
         {
-            c = cn.c.clone(sc);
+            c = cn.c;
             next = cn.next;
             size++;
         }
+        /** 
+         * sets new cellphone to node
+         * @param cr new cellphone to set to
+         */
         public void setCellPhone(CellPhone cr)
         {
             c = cr;
         }
+        /** 
+         * sets new node to next
+         * @param xt new node to set to
+         */
         public void setNext(CellNode xt)
         {
             next = xt;
@@ -53,23 +74,20 @@ public class CellList implements Cloneable{
 
     private CellNode head;
     int size;
-
+    /**
+     * Default constructor.
+    */
     public CellList()
     {
         head = null;
         size = 0;
     }
 
-    
     /** 
-     * @return int
+     * copy constructor
+     * @param lt CellList that is reference for the copy
      */
-    public int getSize()
-    {
-        return size;
-    }
-    //copy constructor
-    public CellList(CellList lt)
+    public CellList(CellList lt) //tested it works
     {
         if(lt.head == null)
             head = null;
@@ -101,19 +119,20 @@ public class CellList implements Cloneable{
     
     
     /** 
-     * @param c
+     * adds the node to the start of the list
+     * @param c cellphone that is used to create the new node
      */
-    public void addToStart(CellPhone c)
+    public void addToStart(CellPhone c) //tested works
     {
         head = new CellNode(c,head);
     }
     
     /** 
-     * @param c
-     * @param i
+     * inserts a new node at a certain index in the CellList
+     * @param c cellphone that's in the new node
+     * @param i index to be inserted at
      */
-    //the exception is for invalid integer, check if it works later
-    public void insertAtIndex(CellPhone c, int i) //throws NoSuchElementException
+    public void insertAtIndex(CellPhone c, int i) //tested works
     {
         CellNode node = new CellNode();
         node.c = c;
@@ -163,8 +182,7 @@ public class CellList implements Cloneable{
     /** 
      * @param i
      */
-    //i think this works? it should unlink the node from the list so it'll be deleted
-    public void deleteFromIndex(int i) //throws NoSuchElementException
+    public void deleteFromIndex(int i) //doesn't work yet but i think i know the answer
     {
         CellNode temp = head;
         if(i < 0 || i > size)
@@ -180,7 +198,8 @@ public class CellList implements Cloneable{
         {
             head = temp.next;
         }
-        for(int j = 0; temp != null && j < i - 1; j++)
+
+        for(int j = 0; temp != null && j < i; j++)
         {
             temp = temp.next;
         }
@@ -191,9 +210,10 @@ public class CellList implements Cloneable{
     }
     
     /** 
-     * @return boolean
+     * deletes the first element of the CellList
+     * @return boolean true if there was something to delte false if there isnt
      */
-    public boolean deleteFromStart()
+    public boolean deleteFromStart() //tested works
     {
         if(head != null)
         {
@@ -209,9 +229,9 @@ public class CellList implements Cloneable{
      * @param x
      * @param i
      */
-    public void replaceAtIndex(CellPhone x, int i)
+    public void replaceAtIndex(CellPhone x, int i) //tested works
     {
-        if(i > size -1)
+        if(i < 0 || i > size)
         {
             System.out.println("ERROR: Given index is out of range! Program will terminate. \n");
             throw new NoSuchElementException();
