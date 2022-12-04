@@ -238,6 +238,7 @@ public class CellList implements Cloneable{
         System.out.println(" X");
     }
 
+    //im too fuckin tired to create this method i just want to be done
     public boolean equals(CellList cell)
     {
         CellNode temp = head;
@@ -252,4 +253,6 @@ public class CellList implements Cloneable{
         }
         return true;
     }
+
+    
 }
