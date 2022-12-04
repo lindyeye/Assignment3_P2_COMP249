@@ -1,3 +1,8 @@
+/**
+ * Assignment 3 - Part 2
+ * For COMP  249 Section D - Fall 2022
+ * @author Linden Wheeler 40195748 and Matej Pederson 40209550
+ */
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -55,6 +60,10 @@ public class CellList implements Cloneable{
         size = 0;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getSize()
     {
         return size;
@@ -90,10 +99,19 @@ public class CellList implements Cloneable{
         }
     }
     
+    
+    /** 
+     * @param c
+     */
     public void addToStart(CellPhone c)
     {
         head = new CellNode(c,head);
     }
+    
+    /** 
+     * @param c
+     * @param i
+     */
     //the exception is for invalid integer, check if it works later
     public void insertAtIndex(CellPhone c, int i) //throws NoSuchElementException
     {
@@ -141,6 +159,10 @@ public class CellList implements Cloneable{
         prev.next = node;
         size++;
     }
+    
+    /** 
+     * @param i
+     */
     //i think this works? it should unlink the node from the list so it'll be deleted
     public void deleteFromIndex(int i) //throws NoSuchElementException
     {
@@ -167,6 +189,10 @@ public class CellList implements Cloneable{
         size--;
 
     }
+    
+    /** 
+     * @return boolean
+     */
     public boolean deleteFromStart()
     {
         if(head != null)
@@ -178,6 +204,11 @@ public class CellList implements Cloneable{
         else
             return false;  
     }
+    
+    /** 
+     * @param x
+     * @param i
+     */
     public void replaceAtIndex(CellPhone x, int i)
     {
         if(i > size -1)
@@ -196,6 +227,11 @@ public class CellList implements Cloneable{
 		temp.c = x;
 
     }
+    
+    /** 
+     * @param SN
+     * @return CellNode
+     */
     public CellNode find(long SN)
     {
         CellNode temp = head;
@@ -209,6 +245,11 @@ public class CellList implements Cloneable{
         }
         return null;
     }
+    
+    /** 
+     * @param SN
+     * @return boolean
+     */
     public boolean contains(long SN)
     {
         if(find(SN) != null)
@@ -238,6 +279,11 @@ public class CellList implements Cloneable{
         System.out.println(" X");
     }
 
+    
+    /** 
+     * @param cell
+     * @return boolean
+     */
     //im too fuckin tired to create this method i just want to be done
     public boolean equals(CellList cell)
     {
