@@ -26,31 +26,32 @@ public class CellListUtilization {
             System.out.println("Program will terminate.");
             System.exit(0);	
         }   
-        int count = 0;  
+ 
         while(sc.hasNextLine())
         {
-            count++;
             long s = sc.nextLong();
-            //System.out.println(s);
-    
+
             String x = sc.next();
-            //System.out.println(x);
     
             double p = sc.nextDouble();
-            //System.out.println(p);
     
             int y = sc.nextInt();
+
             CellPhone c1 = new CellPhone(s,x,y,p);
-            cl1.addToStart(c1);
+
+            if (cl1.find(s) == null){
+                cl1.addToStart(c1);
+            }
         }
         CellPhone c5 = new CellPhone();
         cl1.showContents();
-        cl1.deleteFromIndex(3);
-        // cl1.deleteFromStart();
-        cl1.showContents();
-        System.out.println(cl1.contains(2389176));
-        // CellList cl3 = new CellList(cl1);
-        // cl3.showContents();
+
+        // cl1.deleteFromIndex(3);
+        // // cl1.deleteFromStart();
+        // cl1.showContents();
+        // System.out.println(cl1.contains(2389176));
+        // // CellList cl3 = new CellList(cl1);
+        // // cl3.showContents();
         
         
     }
