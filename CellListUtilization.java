@@ -42,7 +42,7 @@ public class CellListUtilization {
             int y = sc.nextInt();
             CellPhone c1 = new CellPhone(s,x,y,p);
             cl1.addToStart(c1);
-        }
+        }       
         CellPhone c5 = new CellPhone();
         cl1.showContents();
         cl1.deleteFromIndex(3);
