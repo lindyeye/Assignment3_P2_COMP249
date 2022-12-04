@@ -180,28 +180,30 @@ public class CellList{
     /** 
      * @param i
      */
-    public void deleteFromIndex(int i) //doesn't work yet but i think i know the answer
+    public void deleteFromIndex(int i) //fixed tested works
     {
         CellNode temp = head;
         if(i < 0 || i > size)
         {
             throw new NoSuchElementException("That index does not exist");
         }
-        else if(head == null)
+        if(head == null)
         {
             System.out.println("Nothing to delete");
             return;
         }
-        else if(i == 0)
+
+        if(i == 0)
         {
             head = temp.next;
+            return;
         }
 
-        for(int j = 0; temp != null && j < i; j++)
+        for(int j = 0; temp != null && j < i-1; j++)
         {
             temp = temp.next;
         }
-        CellNode next = temp.next;
+        CellNode next = temp.next.next;
         temp.next = next;
         size--;
 
