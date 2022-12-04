@@ -48,6 +48,7 @@ public class CellListUtilization {
         cl1.deleteFromIndex(3);
         // cl1.deleteFromStart();
         cl1.showContents();
+        System.out.println(cl1.contains(2389176));
         // CellList cl3 = new CellList(cl1);
         // cl3.showContents();
         

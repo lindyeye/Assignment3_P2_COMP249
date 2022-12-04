@@ -4,14 +4,12 @@
  * @author Linden Wheeler 40195748 and Matej Pederson 40209550
  */
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 //this is my magnum opus and i will take no complaints. im probably out this bitch after the semester is over so this is my last code for a failed degree :D
 public class CellList{
     
     public class CellNode 
     {
-        Scanner sc = new Scanner(System.in);
         private CellPhone c;
         private CellNode next;
         /**
@@ -178,7 +176,8 @@ public class CellList{
     }
     
     /** 
-     * @param i
+     * deletes a node from a certain index in the list
+     * @param i index
      */
     public void deleteFromIndex(int i) //fixed tested works
     {
@@ -226,9 +225,9 @@ public class CellList{
     }
     
     /** 
-     * 
-     * @param x
-     * @param i
+     * replaces the node at the index with a new one
+     * @param x CellPhone that will be in the new node
+     * @param i index to be replaced
      */
     public void replaceAtIndex(CellPhone x, int i) //tested works
     {
@@ -250,10 +249,11 @@ public class CellList{
     }
     
     /** 
-     * @param SN
-     * @return CellNode
+     * finds the cellnode that has the cellphone with the SN entered by the user
+     * @param SN serial number to search for
+     * @return CellNode node that has the matching SN
      */
-    public CellNode find(long SN) //mem leak <3
+    public CellNode find(long SN) //mem leak <3 + it works
     {
         CellNode temp = head;
         while(temp != null)
@@ -268,10 +268,11 @@ public class CellList{
     }
     
     /** 
-     * @param SN
-     * @return boolean
+     * checks if the list contains an entered serial number
+     * @param SN serial number to search for
+     * @return boolean true if it contains the SN and false if not
      */
-    public boolean contains(long SN)
+    public boolean contains(long SN) //works checked
     {
         if(find(SN) != null)
             return true;
@@ -279,7 +280,10 @@ public class CellList{
             return false;
     }
 
-    public void showContents() //honestly i kind of slayed this(I "borrowed" it from Aiman)
+    /** 
+     * prints the contents of a CellList
+     */
+    public void showContents() //works checked
     {
         
         CellNode temp = head;
@@ -302,8 +306,9 @@ public class CellList{
 
     
     /** 
-     * @param cell
-     * @return boolean
+     * checks if two CellLists have similar objects
+     * @param cell the second list to check
+     * @return boolean return true if equal and false if not
      */
     //im too fuckin tired to create this method i just want to be done
     public boolean equals(CellList cell)
