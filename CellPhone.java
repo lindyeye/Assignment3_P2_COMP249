@@ -67,7 +67,7 @@ public class CellPhone{
     }
     public boolean duplicate(CellPhone x)
     {
-        return(this.brand.equals(x.brand) && this.price == x.price && this.year == x.year && serialNum == x.serialNum);
+        return(brand.equals(x.brand) && price == x.price && year == x.year && serialNum == x.serialNum);
     }
     //that's a copy
     CellPhone(CellPhone c, long serialNum)
