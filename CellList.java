@@ -316,12 +316,16 @@ public class CellList{
         CellNode temp = head;
         CellNode temp1 = cell.head;
 
-        for(int j = 0; j < size; j++)
-        {
-            for(int k = 0; k < cell.size; k++)
-            {
-                
+        if (cell.size != size){
+            return false;
+        }
+
+        while (temp != null){
+            if (temp.c.getBrand() != temp1.c.getBrand() || temp.c.getPrice() != temp1.c.getPrice() || temp.c.getYear() != temp1.c.getYear()){
+                return false;
             }
+            temp = temp.next;
+            temp1 = temp1.next;
         }
         return true;
     }

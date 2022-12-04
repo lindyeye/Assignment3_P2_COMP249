@@ -15,6 +15,8 @@ public class CellListUtilization {
         Scanner sc = null;
         CellList cl1 = new CellList();
         CellList cl2 = new CellList();
+        CellList cl3 = new CellList();
+
 
         try 
         {
@@ -43,8 +45,24 @@ public class CellListUtilization {
                 cl1.addToStart(c1);
             }
         }
-        CellPhone c5 = new CellPhone();
+        
         cl1.showContents();
+
+        // System.out.println();
+
+        // System.out.println(cl2.equals(cl3));
+
+        // CellPhone c2 = new CellPhone(1, "Samsonite", 1984, 420.69);
+        
+        // cl2.addToStart(c2);
+
+        // System.out.println(cl2.equals(cl3));
+
+        // CellPhone c3 = new CellPhone(8, "Samsonite", 1984, 420.69);
+
+        // cl3.addToStart(c3);
+
+        // System.out.println(cl2.equals(cl3));
 
         // cl1.deleteFromIndex(3);
         // // cl1.deleteFromStart();
