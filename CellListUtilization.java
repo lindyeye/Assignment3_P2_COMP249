@@ -6,7 +6,6 @@
 import java.util.Scanner;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 public class CellListUtilization {
     
@@ -52,10 +51,6 @@ public class CellListUtilization {
         cl1.showContents();
 
         long serialNum = 0;
-
-        CellPhone cell1 = null;
-        CellPhone cell2 = null;
-        CellPhone cell3 = null;
 
         System.out.println("\nEnter a serial number to find in List 1: ");
         serialNum = ui.nextLong();
@@ -148,6 +143,8 @@ public class CellListUtilization {
 
         System.out.println("\nInserting cellphone in List TWO at index 7");
         cl2.insertAtIndex(c6, 7);
+
+        ui.close();
 
     }
 }
