@@ -255,15 +255,19 @@ public class CellList{
      */
     public CellNode find(long SN) //mem leak <3 + it works
     {
+        int counter = 1;
         CellNode temp = head;
         while(temp != null)
         {
             if(temp.c.getSerialNum() == SN)
             {
+                System.out.println("Found cellphone with serial number " + SN + ". Number of iterations: " + counter);
                 return temp;
             }
             temp = temp.next;
+            counter++;
         }
+        System.out.println("No cellphone found matching serial number: " + SN + ". Number of iterations: " + counter);
         return null;
     }
     

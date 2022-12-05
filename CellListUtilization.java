@@ -12,6 +12,7 @@ public class CellListUtilization {
     
     public static void main(String[] args)
     {
+        Scanner ui = new Scanner(System.in);
         Scanner sc = null;
         CellList cl1 = new CellList();
         CellList cl2 = new CellList();
@@ -41,36 +42,55 @@ public class CellListUtilization {
 
             CellPhone c1 = new CellPhone(s,x,y,p);
 
-            if (cl1.find(s) == null){
+            if (cl1.find(s) == null)
+            {
                 cl1.addToStart(c1);
             }
         }
+
+        System.out.println();
         
         cl1.showContents();
 
-        // System.out.println();
+        long serialNum = 0;
+        CellPhone c2 = null;
 
-        // System.out.println(cl2.equals(cl3));
+        System.out.println("Enter a serial number to find in list: ");
+        serialNum = ui.nextLong();
+        ui.nextLine();
+        cl1.find(serialNum);
 
-        // CellPhone c2 = new CellPhone(1, "Samsonite", 1984, 420.69);
+        System.out.println("Enter a second serial number to find in list: ");
+        serialNum = ui.nextLong();
+        ui.nextLine();
+        cl1.find(serialNum);
+
+        System.out.println("Enter a third serial number to find in list: ");
+        serialNum = ui.nextLong();
+        ui.nextLine();
+        cl1.find(serialNum);
+
+        System.out.println();
+
+        System.out.println(cl2.equals(cl3));
+
+        CellPhone c3 = new CellPhone(1, "Samsonite", 1984, 420.69);
         
-        // cl2.addToStart(c2);
+        cl2.addToStart(c3);
 
-        // System.out.println(cl2.equals(cl3));
+        System.out.println(cl2.equals(cl3));
 
-        // CellPhone c3 = new CellPhone(8, "Samsonite", 1984, 420.69);
+        CellPhone c4 = new CellPhone(8, "Samsonite", 1984, 420.69);
 
-        // cl3.addToStart(c3);
+        cl3.addToStart(c4);
 
-        // System.out.println(cl2.equals(cl3));
+        System.out.println(cl2.equals(cl3));
 
         // cl1.deleteFromIndex(3);
-        // // cl1.deleteFromStart();
+        // cl1.deleteFromStart();
         // cl1.showContents();
         // System.out.println(cl1.contains(2389176));
-        // // CellList cl3 = new CellList(cl1);
-        // // cl3.showContents();
-        
-        
+        // CellList cl3 = new CellList(cl1);
+        // cl3.showContents(); 
     }
 }
