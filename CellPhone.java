@@ -36,7 +36,6 @@ public class CellPhone{
         this.year = year;
         this.price = price;
     }
-    
     /** 
      * returns the serial number
      * @return long serial number of the cellphone

@@ -67,6 +67,14 @@ public class CellList{
         {
             next = xt;
         }
+        /** 
+         * returns cellphone object
+         * @return cellphone
+         */
+        public CellPhone getCellPhone(){
+            return c;
+        }
+
         
     } //end of CellNode
 
@@ -135,9 +143,16 @@ public class CellList{
         CellNode node = new CellNode();
         node.c = c;
         node.next = null;
-        if(i < 0 || i > size - 1)
-        {
-            throw new NoSuchElementException();
+        try{
+            if(i < 0 || i > size - 1)
+            {
+                throw new NoSuchElementException("ERROR, index " + i + " is out of bounds. Cellphone not added.");
+            }
+        }
+        catch(NoSuchElementException e){
+            System.out.println(e.getMessage());
+            System.out.println("Terminating program.\n");
+            System.exit(0);
         }
         if (head == null)
         {
@@ -172,7 +187,6 @@ public class CellList{
         }
         node.next = current;
         prev.next = node;
-        size++;
     }
     
     /** 
@@ -220,8 +234,11 @@ public class CellList{
             size--;
             return true;
         }
-        else
-            return false;  
+        else{
+            System.out.println("List is empty, cannot delete from start.");
+            return false; 
+        }
+         
     }
     
     /** 
@@ -278,10 +295,16 @@ public class CellList{
      */
     public boolean contains(long SN) //works checked
     {
-        if(find(SN) != null)
-            return true;
-        else
-            return false;
+        CellNode temp = head;
+        while(temp != null)
+        {
+            if(temp.c.getSerialNum() == SN)
+            {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
     }
 
     /** 
@@ -325,7 +348,7 @@ public class CellList{
         }
 
         while (temp != null){
-            if (temp.c.getBrand() != temp1.c.getBrand() || temp.c.getPrice() != temp1.c.getPrice() || temp.c.getYear() != temp1.c.getYear()){
+            if (!temp.c.equals(temp1.c)){
                 return false;
             }
             temp = temp.next;
