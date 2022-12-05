@@ -93,7 +93,7 @@ public class CellList{
      * copy constructor
      * @param lt CellList that is reference for the copy
      */
-    public CellList(CellList lt) //tested it works check deep copy
+    public CellList(CellList lt)
     {
         if(lt.head == null)
             head = null;
@@ -128,7 +128,7 @@ public class CellList{
      * adds the node to the start of the list
      * @param c cellphone that is used to create the new node
      */
-    public void addToStart(CellPhone c) //tested works
+    public void addToStart(CellPhone c)
     {
         head = new CellNode(c,head);
     }
@@ -138,7 +138,7 @@ public class CellList{
      * @param c cellphone that's in the new node
      * @param i index to be inserted at
      */
-    public void insertAtIndex(CellPhone c, int i) //tested works
+    public void insertAtIndex(CellPhone c, int i)
     {
         CellNode node = new CellNode();
         node.c = c;
@@ -193,7 +193,7 @@ public class CellList{
      * deletes a node from a certain index in the list
      * @param i index
      */
-    public void deleteFromIndex(int i) //fixed tested works
+    public void deleteFromIndex(int i)
     {
         CellNode temp = head;
         if(i < 0 || i > size)
@@ -226,7 +226,7 @@ public class CellList{
      * deletes the first element of the CellList
      * @return boolean true if there was something to delte false if there isnt
      */
-    public boolean deleteFromStart() //tested works
+    public boolean deleteFromStart()
     {
         if(head != null)
         {
@@ -246,7 +246,7 @@ public class CellList{
      * @param x CellPhone that will be in the new node
      * @param i index to be replaced
      */
-    public void replaceAtIndex(CellPhone x, int i) //tested works
+    public void replaceAtIndex(CellPhone x, int i) 
     {
         if(i < 0 || i > size)
         {
@@ -270,8 +270,13 @@ public class CellList{
      * @param SN serial number to search for
      * @return CellNode node that has the matching SN
      */
-    public CellNode find(long SN) //mem leak <3 + it works
+    public CellNode find(long SN)   // PRIVACY LEAK
     {
+        /*
+         * This is the method where the privacy leak occurs. Since the method returns a cellNode, that cellNode can
+         * be used to nullify all the nodes that come after it in the linked list. This would partly destroy the linked
+         * list. A solution to this would be to either return a copy of the node, or just to just not return a node at all.
+         */
         int counter = 1;
         CellNode temp = head;
         while(temp != null)
@@ -293,7 +298,7 @@ public class CellList{
      * @param SN serial number to search for
      * @return boolean true if it contains the SN and false if not
      */
-    public boolean contains(long SN) //works checked
+    public boolean contains(long SN)
     {
         CellNode temp = head;
         while(temp != null)
@@ -310,7 +315,7 @@ public class CellList{
     /** 
      * prints the contents of a CellList
      */
-    public void showContents() //works checked
+    public void showContents()
     {
         
         CellNode temp = head;
@@ -337,7 +342,6 @@ public class CellList{
      * @param cell the second list to check
      * @return boolean return true if equal and false if not
      */
-    //im too fuckin tired to create this method i just want to be done
     public boolean equals(CellList cell)
     {
         CellNode temp = head;
